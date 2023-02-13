@@ -10,10 +10,9 @@ public class Item : MonoBehaviour
     public string Descripteion;
     public SpriteRenderer Sprite;
 
-    [Tooltip("Chance in %")]
-    public float Chance;
+    [Tooltip("Chance in %")] public float Chance;
 
-    [SerializeField] Scroller _scroller;
+    [SerializeField] private Scroller _scroller;
 
 
     private void OnTriggerEnter2D(Collider2D collision)

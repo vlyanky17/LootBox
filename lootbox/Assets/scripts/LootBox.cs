@@ -11,10 +11,17 @@ public class LootBox : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private WinnerPanel _winnerPanel;
     [SerializeField] private Scroller _scroller;
+
     void Awake()
     {
         _button.onClick.AddListener(SelectWinner);
     }
+
+    private void OnDestroy()
+    {
+        _button.onClick.RemoveAllListeners();
+    }
+
     private void SelectWinner()
     {
         var percents = _scroller.GetChancePercent();
