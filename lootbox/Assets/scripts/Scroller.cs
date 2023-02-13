@@ -1,16 +1,11 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Scroller : MonoBehaviour
 {
     [SerializeField] private LootBox _lootBox;
     [SerializeField] private Item[] _items;
-    [SerializeField] private RectTransform _rTanform;
+    [SerializeField] private RectTransform _rectTanform;
     [SerializeField] private BoxCollider2D _collider;
     [SerializeField] private SpriteRenderer _bar;
 
@@ -36,12 +31,12 @@ public class Scroller : MonoBehaviour
         if (_count == _items.Length)
             _count = 0;
         var item = _items[_count];
-        if (item.transform.parent == _rTanform.transform)
+        if (item.transform.parent == _rectTanform.transform)
         {
             ItemOutField(item);
         }
         item.gameObject.SetActive(true);
-        item.transform.SetParent(_rTanform.transform);
+        item.transform.SetParent(_rectTanform.transform);
         _count++;
     }
 
@@ -74,7 +69,7 @@ public class Scroller : MonoBehaviour
         _items[winnerNumber] = swapItem;
         _collider.isTrigger = true;
         Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(_rTanform.transform.DOLocalMoveX(-170 * _items.Length * 3 - 70, _items.Length * 2));
+        mySequence.Append(_rectTanform.transform.DOLocalMoveX(-170 * _items.Length * 3 - 70, _items.Length * 2));
         mySequence.AppendCallback(ScrollEnd);
         SendNext();
     }
@@ -96,11 +91,11 @@ public class Scroller : MonoBehaviour
 
     private void GetRightLeftPos()
     {
-        _rTanform.anchorMin = new Vector2(0, 0.5f);
-        _rTanform.anchorMax = new Vector2(0, 0.5f);
-        _leftPos = _rTanform.transform.localPosition;
-        _rTanform.anchorMin = new Vector2(1, 0.5f);
-        _rTanform.anchorMax = new Vector2(1, 0.5f);
-        _rightPos = _rTanform.transform.localPosition;
+        _rectTanform.anchorMin = new Vector2(0, 0.5f);
+        _rectTanform.anchorMax = new Vector2(0, 0.5f);
+        _leftPos = _rectTanform.transform.localPosition;
+        _rectTanform.anchorMin = new Vector2(1, 0.5f);
+        _rectTanform.anchorMax = new Vector2(1, 0.5f);
+        _rightPos = _rectTanform.transform.localPosition;
     }
 }

@@ -1832,7 +1832,7 @@ MonoBehaviour:
   - {fileID: 1984185694}
   - {fileID: 142156864}
   - {fileID: 1681689279}
-  _rTanform: {fileID: 1691383112}
+  _rectTanform: {fileID: 1691383112}
   _collider: {fileID: 1215279679}
   _bar: {fileID: 1215279681}
 --- !u!1 &1628200409
